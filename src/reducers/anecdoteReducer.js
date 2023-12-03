@@ -29,15 +29,22 @@ const reducer = (state = initialState, action) => {
         return x;
       })
     }
-    default: return state
+    case "ADD" : {
+      state = state.concat([asObject(action.payload)])
+    }
   }
-
   return state
 }
 export function voteActionCreator(id){
   return {
     type : "VOTE",
     payload : id
+  }
+}
+export function addAnecdote(content){
+  return {
+    type : "ADD",
+    payload : content
   }
 }
 
