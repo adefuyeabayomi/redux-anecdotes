@@ -7,5 +7,8 @@ function getAll(){
 function saveAnecdote(data){
     return axios.post(baseUrl,data)
 }
-export {getAll,saveAnecdote}
+function updateAnecdote(data){
+    return axios.put(baseUrl+"/"+data.id,data)
+}
+export {getAll,saveAnecdote,updateAnecdote}
 

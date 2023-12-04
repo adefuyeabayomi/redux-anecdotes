@@ -1,7 +1,5 @@
 import { useDispatch } from "react-redux"
-import { add } from "../reducers/anecdoteSlice";
-import { updateNotification, updateShowNotification } from "../reducers/notificationSlice";
-import { saveAnecdote } from "../../serviceUtils";
+import { createNewAnecdotes } from "../reducers/anecdoteSlice";
 
 function AnecdoteForm (){
 
@@ -10,14 +8,7 @@ function AnecdoteForm (){
         e.preventDefault();
         let content = e.target.anecdote.value;
         e.target.anecdote.value = "";
-        saveAnecdote({content,votes : 0}).then((res)=>{
-            console.log("res.data", res.data)
-            dispatch(add(res.data))
-            dispatch(updateNotification("New Anecdoted Added : " + res.data.content))
-            dispatch(updateShowNotification(true))
-            console.log("anecdote", content)
-        })
-        
+        dispatch(createNewAnecdotes({content,votes : 0}))
       }
     return (
         <div className="anecdote-form-container">

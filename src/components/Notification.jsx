@@ -1,9 +1,6 @@
 import { useSelector } from "react-redux"
-import { updateShowNotification } from "../reducers/notificationSlice"
-import { useDispatch } from "react-redux"
 
 const Notification = () => {
-  let dispatch = useDispatch()
   let notification = useSelector(state => state.notification)
   const style = {
     border: 'solid',
@@ -13,9 +10,6 @@ const Notification = () => {
     borderColor : "gray"
   }
   if(notification.show){
-    setTimeout(()=>{
-      dispatch(updateShowNotification(false))
-    },5000)
     return ( 
       <div style={style}>
         {notification.message}
