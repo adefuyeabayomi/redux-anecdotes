@@ -28,9 +28,11 @@ const reducer = (state = initialState, action) => {
         x.id == action.payload ? x.votes++ : false;
         return x;
       })
+      break;
     }
     case "ADD" : {
       state = state.concat([asObject(action.payload)])
+      break;
     }
   }
   return state
