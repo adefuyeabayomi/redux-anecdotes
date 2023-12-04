@@ -8,13 +8,12 @@ export function sortAnecdote(init,sorted = []){
         if(each.votes >max.votes ){
           max = each;
         }
-      } console.log("max", max)
+      } 
       sorted.push(max);
       init = init.filter(x=>{
         let boo = x.content !== max.content;
         return boo;
       }) 
-      console.log("init", init, init.length)
       return sortAnecdote(init,sorted)
     }
   }

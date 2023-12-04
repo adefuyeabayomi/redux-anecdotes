@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux"
-import { addAnecdote } from "../reducers/anecdoteReducer";
+import { add } from "../reducers/anecdoteSlice";
 
-function AnecdoteForm (props){
+function AnecdoteForm (){
 
     let dispatch = useDispatch();
     function addAnecdoteHandler(e){
         e.preventDefault();
         let content = e.target.anecdote.value;
         e.target.anecdote.value = ""
-        dispatch(addAnecdote(content))
+        dispatch(add(content))
         console.log("anecdote", content)
       }
     return (
