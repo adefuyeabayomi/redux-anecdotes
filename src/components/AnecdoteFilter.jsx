@@ -9,6 +9,7 @@ export default function AnecdoteFilter (){
     function handleChange(e){
         let value = e.target.value;
         dispatch(updateFilter(value))
+        
     }
     return (
         <div className="anecdote-filter-container">

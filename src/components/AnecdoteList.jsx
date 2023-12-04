@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { sortAnecdote } from "../utils";
 import { vote } from "../reducers/anecdoteSlice";
-
+import { updateShowNotification , updateNotification} from "../reducers/notificationSlice";
 
 function AnecdoteList (){
 
@@ -10,6 +10,9 @@ function AnecdoteList (){
     const dispatch = useDispatch()
     const voteHandler = (id) => {
       dispatch(vote(id))
+      dispatch(updateNotification("You Voted for anecdote id : " + id))
+      dispatch(updateShowNotification(true))
+
     }
 
     return (
