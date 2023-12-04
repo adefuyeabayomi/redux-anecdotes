@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { sortAnecdote } from "./utils";
-import { voteActionCreator } from './reducers/anecdoteReducer'
+import { sortAnecdote } from "../utils";
+import { voteActionCreator } from '../reducers/anecdoteReducer'
 
 
 function AnecdoteList (){
 
-    let anecdotes = useSelector((state)=> state);
+    let {anecdotes,filter} = useSelector((state)=> state);
     anecdotes = sortAnecdote(anecdotes);
     const dispatch = useDispatch()
     const vote = (id) => {
@@ -15,7 +15,10 @@ function AnecdoteList (){
 
     return (
         <div className="anecdoteListContainer">
-            {anecdotes.map(anecdote =>
+            {anecdotes.filter(x=>{
+                let boo = x.content.indexOf(filter) !== -1;
+                return boo;
+            }).map(anecdote =>
                 <div key={anecdote.id}>
                 <div>
                     {anecdote.content}
